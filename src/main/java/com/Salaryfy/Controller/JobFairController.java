@@ -41,9 +41,7 @@ public class JobFairController {
     public ResponseEntity<?> addAllJobFairques(@RequestBody List<JobFairQueDto> listOfjobFairQueDto){
         System.err.println("42"+listOfjobFairQueDto.size());
         try{
-            System.out.println("1");
             ResponseOfAllJobFairQue responseOfAllJobFairQue = new ResponseOfAllJobFairQue("success");
-            System.out.println("2");
             return ResponseEntity.status(HttpStatus.OK).body(iJobFairQue.addAllJobFairQuestion(listOfjobFairQueDto,responseOfAllJobFairQue));
 
         }catch (Exception e){
@@ -112,16 +110,13 @@ public class JobFairController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseJobFairQ1Dto);
         }
     }
-
     @GetMapping("/getJobFairDetailsByJobId")
     public ResponseEntity<?> getJobFairDetailsByJobId(@RequestParam Integer jobId){
         try {
             ResponseDto responseDto = new ResponseDto("success");
             responseDto.setResponse(iJobFairQue.getJobFairDetailsByJobId(jobId));
             return ResponseEntity.status(HttpStatus.OK).body(responseDto);
-
         }catch ( JobFairQuestionDetailsNotFoundByJobId jobFairQuestionDetailsNotFoundByJobId) {
-
             ResponseJobFairQueDto responseJobFairQ1Dto = new ResponseJobFairQueDto("unsuccess");
             responseJobFairQ1Dto.setException(String.valueOf(jobFairQuestionDetailsNotFoundByJobId));
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseJobFairQ1Dto);

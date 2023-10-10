@@ -31,19 +31,6 @@ public class ProfileLevelController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseProfileLevelDto);
         }
     }
-//    @PostMapping("/save")
-//    public ResponseEntity<?> postProfileLevelData(@RequestBody List<ProfileLevelDto> listOfProfileLevelDto){
-//        try {
-//            ResponseProfileLevelDto responseProfileLevelDto = new ResponseProfileLevelDto("success");
-//            responseProfileLevelDto.setResponse(iProfileLevel.saveAllProfileLevelData(listOfProfileLevelDto));
-//            return ResponseEntity.status(HttpStatus.OK).body(responseProfileLevelDto);
-//
-//        }catch (UserNotFoundException userNotFoundException){
-//            ResponseProfileLevelDto responseProfileLevelDto = new ResponseProfileLevelDto("unsuccess");
-//            responseProfileLevelDto.setException(String.valueOf(userNotFoundException));
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseProfileLevelDto);
-//        }
-//    }
     @GetMapping("/getAllProfileLevelDetails")
     public ResponseEntity<?> getAllProfileLevelDetails(@RequestParam Integer pageNo){
         return ResponseEntity.status(HttpStatus.OK).body(iProfileLevel.getAllProfileLevelDetails(pageNo));
@@ -61,8 +48,6 @@ public class ProfileLevelController {
             responseSingleProfilelevelDto.setException(String.valueOf(profileLevelIdNotFoundException));
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseSingleProfilelevelDto);
         }
-
-
     }
     @DeleteMapping("/deleteProfileLevel")
     public ResponseEntity<?> deleteProfileById(@RequestParam Integer profileId){
@@ -90,19 +75,4 @@ public class ProfileLevelController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseSingleProfilelevelDto);
         }
     }
-
-//    @PatchMapping("/updateProfileLevel")
-//    public ResponseEntity<?> updateProfileLevelDetails(@RequestBody ProfileLevelDto profileLevelDto,@RequestParam Integer profileLevelId){
-//        try {
-//            ResponseProfileLevelDto responseProfileLevelDto = new ResponseProfileLevelDto("success");
-//            responseProfileLevelDto.setResponse(iProfileLevel.updateProfileLevelDetails(profileLevelDto,profileLevelId));
-//            return ResponseEntity.status(HttpStatus.OK).body(responseProfileLevelDto);
-//
-//        }catch (UserNotFoundException userNotFoundException){
-//            ResponseProfileLevelDto responseProfileLevelDto = new ResponseProfileLevelDto("unsuccess");
-//            responseProfileLevelDto.setException(String.valueOf(userNotFoundException));
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseProfileLevelDto);
-//        }
-//
-//    }
 }
